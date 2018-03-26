@@ -95,30 +95,7 @@
 				// Accept required setting from class property (class='required')
 				if(input.hasClass('required')) control.required = true;
 				
-				// Create 'cancel' button
-				rater.append(
-					control.cancel = $('<div class="rating-cancel"><a title="' + control.cancel + '">' + control.cancelValue + '</a></div>')
-					.on('mouseover',function(){
-						$(this).rating('drain');
-						$(this).addClass('star-rating-hover');
-						//$(this).rating('focus');
-					})
-					.on('mouseout',function(){
-						$(this).rating('draw');
-						$(this).removeClass('star-rating-hover');
-						//$(this).rating('blur');
-					})
-					.on('click',function(){
-					 $(this).rating('select');
-					})
-					.data('rating', control)
-				);
-				
 			}; // first element of group
-			
-			// insert rating star (thanks Jan Fanslau rev125 for blind support https://code.google.com/p/jquery-star-rating-plugin/issues/detail?id=125)
-			var star = $('<div role="text" aria-label="'+ this.title +'" class="star-rating rater-'+ control.serial +'"><a title="' + (this.title || this.value) + '">' + this.value + '</a></div>');
-			rater.append(star);
 			
 			// inherit attributes from input element
 			if(this.id) star.attr('id', this.id);
