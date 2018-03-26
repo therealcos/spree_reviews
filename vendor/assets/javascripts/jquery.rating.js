@@ -206,42 +206,7 @@
    // blur handler, as requested by focusdigital.co.uk
 			if(control.blur) control.blur.apply(input[0], [input.val(), $('a', input.data('rating.star'))[0]]);
 		}, // $.fn.rating.blur
-		
-		fill: function(){ // fill to the current mouse position.
-			var control = this.data('rating'); if(!control) return this;
-			// do not execute when control is in read-only mode
-			if(control.readOnly) return;
-			// Reset all stars and highlight them up to this element
-			this.rating('drain');
-			this.prevAll().addBack().filter('.rater-'+ control.serial).addClass('star-rating-hover');
-		},// $.fn.rating.fill
-		
-		drain: function() { // drain all the stars.
-			var control = this.data('rating'); if(!control) return this;
-			// do not execute when control is in read-only mode
-			if(control.readOnly) return;
-			// Reset all stars
-			control.rater.children().filter('.rater-'+ control.serial).removeClass('star-rating-on').removeClass('star-rating-hover');
-		},// $.fn.rating.drain
-		
-		draw: function(){ // set value and stars to reflect current selection
-			var control = this.data('rating'); if(!control) return this;
-			// Clear all stars
-			this.rating('drain');
-			// Set control value
-			var current = $( control.current );//? control.current.data('rating.input') : null );
-			var starson = current.length ? current.prevAll().addBack().filter('.rater-'+ control.serial) : null;
-			if(starson)	starson.addClass('star-rating-on');
-			// Show/hide 'cancel' button
-			control.cancel[control.readOnly || control.required?'hide':'show']();
-			// Add/remove read-only classes to remove hand pointer
-			this.siblings()[control.readOnly?'addClass':'removeClass']('star-rating-readonly');
-		},// $.fn.rating.draw
-		
-		
-		
-		
-		
+				
 		select: function(value,wantCallBack){ // select a value
 			var control = this.data('rating'); if(!control) return this;
 			// do not execute when control is in read-only mode
